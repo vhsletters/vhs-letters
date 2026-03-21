@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body { font-family: system-ui, sans-serif; }
+
+.neon-cyan { text-shadow: 0 0 10px #00F3FF, 0 0 20px #00F3FF, 0 0 40px #00F3FF; animation: neon-flicker 1.5s infinite alternate; }
+.neon-yellow { text-shadow: 0 0 10px #FEFF38, 0 0 20px #FEFF38, 0 0 40px #FEFF38; }
+
+.vhs-scan::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(transparent 50%, rgba(255,255,255,0.08) 50%);
+    background-size: 100% 6px; animation: scan 3s linear infinite;
+    pointer-events: none; z-index: 10;
+}
+@keyframes scan { 0% { background-position: 0 0; } 100% { background-position: 0 600px; } }
+
+.story-card {
+    transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+.story-card:hover {
+    transform: scale(1.04) rotate(1deg);
+    box-shadow: 0 0 40px #00F3FF;
+    filter: brightness(1.2);
+}
+
+.coming-soon {
+    position: absolute; top: 20px; right: 20px; background: #FF0033; color: white;
+    padding: 4px 12px; font-size: 12px; transform: rotate(12deg);
+}
+
+.glitch { animation: glitch 0.4s linear infinite; }
+@keyframes glitch {
+    2%, 64% { transform: translate(2px,0) skew(0deg); }
+    4%, 60% { transform: translate(-2px,0) skew(0deg); }
+}
+
+.big-cta {
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 30px #FEFF38; }
+    50% { box-shadow: 0 0 60px #FEFF38; }
+}

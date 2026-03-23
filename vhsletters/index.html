@@ -1,140 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VHS Letters • Be Kind… Rewind Time</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VHS Letters • Be Kind… Rewind Time</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg-[#0A2540] text-[#E0F2FE] overflow-x-hidden">
+<body class="bg-[#0a0f1a] text-gray-200 font-sans">
 
-    <!-- Navbar -->
-    <nav class="bg-black/90 backdrop-blur-md fixed w-full z-50 border-b border-cyan-400">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <span class="text-3xl">📼</span>
-                <h1 class="text-2xl font-bold tracking-widest neon-cyan">VHS LETTERS</h1>
-            </div>
-            <div class="flex gap-8 text-sm font-medium">
-                <a href="#stories" class="hover:text-cyan-400 transition">Stories</a>
-                <a href="#how" class="hover:text-cyan-400 transition">How It Works</a>
-                <a href="#gift" class="hover:text-cyan-400 transition">Gift Now</a>
-            </div>
-        </div>
-    </nav>
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-cyan-900">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📼</span>
+        <h1 class="text-2xl font-bold tracking-wider text-cyan-400 neon">VHS LETTERS</h1>
+      </div>
+      <div class="flex gap-8 text-sm font-medium">
+        <a href="#stories" class="hover:text-cyan-300 transition">Stories</a>
+        <a href="#how" class="hover:text-cyan-300 transition smooth-scroll">How It Works</a>
+        <a href="#faq" class="hover:text-cyan-300 transition">FAQ</a>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Hero -->
-    <section class="min-h-screen vhs-scan flex items-center justify-center pt-20 bg-[radial-gradient(at_center,#1E3A5F_0%,#0A2540_70%)]">
-        <div class="max-w-5xl mx-auto text-center px-6">
-            <div class="inline-block bg-black px-6 py-2 text-xs tracking-[4px] border border-cyan-400 mb-6">EST. 1987 • REWINDING IN 2026</div>
-            <h1 class="text-7xl md:text-8xl font-black leading-none neon-yellow mb-6">BE KIND…<br>REWIND TIME</h1>
-            <p class="text-2xl md:text-3xl max-w-2xl mx-auto mb-10">80s stories + every envelope is full of surprises (cassette tape, movie ticket stubs, Blockbuster receipt) delivered twice a month</p>
-            
-            <a href="#stories" class="big-cta inline-block bg-[#FEFF38] hover:bg-yellow-300 text-black font-bold text-2xl px-16 py-6 border-4 border-black shadow-[0_0_30px_#FEFF38] transition-all">
-               START THEIR ADVENTURE – $24.99/MO
+  <!-- Hero – strong CTA -->
+  <section class="min-h-screen relative flex items-center justify-center pt-20 bg-cover bg-center"
+    style="background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&q=80&w=2000');">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/90"></div>
+    <div class="relative z-10 text-center px-6 max-w-5xl">
+      <h1 class="text-6xl md:text-8xl font-black leading-none mb-6 neon-yellow">
+        YOUR STORY IS WAITING<br/>ON VHS TAPE
+      </h1>
+      <p class="text-xl md:text-3xl mb-10 max-w-3xl mx-auto">
+        24 letters. One unforgettable story from the VHS era. Delivered straight to your mailbox twice a month.
+      </p>
+      <p class="text-lg md:text-2xl mb-12 opacity-90">
+        This isn’t a newsletter. It’s not a podcast. It’s stories you can hold — printed on paper, sealed in an envelope, straight out of 1987.
+      </p>
+      <a href="https://whop.com/the-vhs-letters/80s-video-store-story-subscription/"
+         class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold text-2xl md:text-3xl px-16 py-6 rounded-lg shadow-2xl transition transform hover:scale-105">
+        START THEIR 80s ADVENTURE – $13/MO
+      </a>
+    </div>
+  </section>
+
+  <!-- Second CTA section -->
+  <section class="py-24 bg-cover bg-center relative"
+    style="background-image: url('https://images.unsplash.com/photo-1588345922856-9c6a5e0e7d8e?auto=format&fit=crop&q=80&w=2000');">
+    <div class="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60"></div>
+    <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <h2 class="text-5xl md:text-7xl font-black mb-8 neon-magenta">
+        THE MOST IMMERSIVE NOSTALGIC GIFT YOU CAN GIVE
+      </h2>
+      <p class="text-xl md:text-2xl mb-12 max-w-4xl mx-auto">
+        We took everything we loved about the 80s — the drama, the heart, the big feelings no one was embarrassed to have — and turned it into a story that unfolds in your mailbox over 12 months.
+      </p>
+      <a href="https://whop.com/the-vhs-letters/80s-video-store-story-subscription/"
+         class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold text-2xl md:text-3xl px-16 py-6 rounded-lg shadow-2xl transition transform hover:scale-105">
+        CLAIM YOUR STORY NOW – $13/MO
+      </a>
+    </div>
+  </section>
+
+  <!-- Choose Your Story -->
+  <section id="stories" class="py-24 bg-black">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-5xl md:text-6xl font-black text-center neon-cyan mb-16">
+        CHOOSE YOUR 80s BLOCKBUSTER ADVENTURE
+      </h2>
+      <div class="grid md:grid-cols-3 gap-10">
+        <!-- Live story -->
+        <div class="bg-gray-900 border-4 border-cyan-600 rounded-xl overflow-hidden transform hover:scale-105 transition">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800" alt="Neon Heartbreak" class="w-full h-64 object-cover">
+          <div class="p-8">
+            <span class="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-bold">LIVE NOW</span>
+            <h3 class="text-4xl font-bold mt-6 mb-4 text-cyan-300">Neon Heartbreak</h3>
+            <p class="text-lg opacity-80 mb-8">
+              A teen couple navigates neon nights and first love in 1987. 24 letters delivered twice monthly.
+            </p>
+            <a href="https://whop.com/the-vhs-letters/80s-video-store-story-subscription/"
+               class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-5 text-xl rounded-lg">
+               CHOOSE THIS STORY
             </a>
+          </div>
         </div>
-    </section>
 
-    <!-- Stories Section -->
-    <section id="stories" class="py-20 bg-black">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-5xl font-bold text-center neon-cyan mb-16">CHOOSE YOUR 80s BLOCKBUSTER ADVENTURE</h2>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- LIVE STORY -->
-                <div class="story-card relative bg-[#112B4A] border-4 border-cyan-400 p-6 rounded overflow-hidden group">
-                    <div class="h-64 bg-[url('https://picsum.photos/id/1015/600/400')] bg-cover bg-center"></div>
-                    <div class="pt-6">
-                        <span class="text-xs bg-green-500 text-black px-3 py-1">LIVE NOW</span>
-                        <h3 class="text-3xl font-bold neon-cyan mt-4">NEON HEARTBREAK</h3>
-                        <p class="text-sm opacity-80 mt-2">A teen couple navigates neon nights and first love in 1987. 24 letters + trinkets.</p>
-                        <a href="https://whop.com/the-vhs-letters/80s-video-store-story-subscription/" class="mt-8 block w-full text-center bg-[#FEFF38] hover:bg-yellow-300 text-black font-bold py-4 text-lg border-4 border-black">
-                           CHOOSE THIS STORY → BUY NOW
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Coming Soon 1 -->
-                <div class="story-card relative bg-[#112B4A] border-4 border-gray-600 p-6 rounded overflow-hidden opacity-75">
-                    <div class="coming-soon text-xs font-bold">COMING SOON</div>
-                    <div class="h-64 bg-[url('https://picsum.photos/id/160/600/400')] bg-cover bg-center"></div>
-                    <div class="pt-6">
-                        <h3 class="text-3xl font-bold">PIXEL PERIL</h3>
-                        <p class="text-sm opacity-80 mt-2">Arcade mystery adventure. 24 letters + trinkets.</p>
-                    </div>
-                </div>
-
-                <!-- Coming Soon 2 -->
-                <div class="story-card relative bg-[#112B4A] border-4 border-gray-600 p-6 rounded overflow-hidden opacity-75">
-                    <div class="coming-soon text-xs font-bold">COMING SOON</div>
-                    <div class="h-64 bg-[url('https://picsum.photos/id/201/600/400')] bg-cover bg-center"></div>
-                    <div class="pt-6">
-                        <h3 class="text-3xl font-bold">MIXTAPE MAYHEM</h3>
-                        <p class="text-sm opacity-80 mt-2">Boombox-fueled quest. 24 letters + trinkets.</p>
-                    </div>
-                </div>
-
-                <!-- Coming Soon 3 -->
-                <div class="story-card relative bg-[#112B4A] border-4 border-gray-600 p-6 rounded overflow-hidden opacity-75">
-                    <div class="coming-soon text-xs font-bold">COMING SOON</div>
-                    <div class="h-64 bg-[url('https://picsum.photos/id/251/600/400')] bg-cover bg-center"></div>
-                    <div class="pt-6">
-                        <h3 class="text-3xl font-bold">ARCADE AFTER DARK</h3>
-                        <p class="text-sm opacity-80 mt-2">Stranger Things vibes. 24 letters + trinkets.</p>
-                    </div>
-                </div>
-
-                <!-- Coming Soon 4 -->
-                <div class="story-card relative bg-[#112B4A] border-4 border-gray-600 p-6 rounded overflow-hidden opacity-75">
-                    <div class="coming-soon text-xs font-bold">COMING SOON</div>
-                    <div class="h-64 bg-[url('https://picsum.photos/id/29/600/400')] bg-cover bg-center"></div>
-                    <div class="pt-6">
-                        <h3 class="text-3xl font-bold">NEON NIGHTS</h3>
-                        <p class="text-sm opacity-80 mt-2">Cyber romance. 24 letters + trinkets.</p>
-                    </div>
-                </div>
-
-                <!-- Coming Soon 5 -->
-                <div class="story-card relative bg-[#112B4A] border-4 border-gray-600 p-6 rounded overflow-hidden opacity-75">
-                    <div class="coming-soon text-xs font-bold">COMING SOON</div>
-                    <div class="h-64 bg-[url('https://picsum.photos/id/201/600/400')] bg-cover bg-center"></div>
-                    <div class="pt-6">
-                        <h3 class="text-3xl font-bold">REWIND REBELLION</h3>
-                        <p class="text-sm opacity-80 mt-2">Action-packed 80s adventure. 24 letters + trinkets.</p>
-                    </div>
-                </div>
-            </div>
+        <!-- Coming soon placeholders -->
+        <div class="bg-gray-900 border-4 border-gray-700 rounded-xl overflow-hidden opacity-60 relative">
+          <div class="absolute top-4 right-4 bg-yellow-500 text-black px-4 py-1 rounded-full text-sm font-bold transform rotate-6">COMING SOON</div>
+          <div class="h-64 bg-gray-800 flex items-center justify-center text-6xl">?</div>
+          <div class="p-8">
+            <h3 class="text-4xl font-bold mt-6 mb-4">Pixel Peril</h3>
+            <p class="text-lg opacity-80">Arcade mystery adventure. 24 letters.</p>
+          </div>
         </div>
-    </section>
 
-    <!-- How It Works -->
-    <section id="how" class="py-20 bg-[#0F172A]">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-5xl font-bold neon-yellow mb-12">HOW IT WORKS</h2>
-            <div class="grid md:grid-cols-5 gap-8">
-                <div><div class="text-6xl mb-4">1️⃣</div><p class="font-medium">Pick Neon Heartbreak</p></div>
-                <div><div class="text-6xl mb-4">2️⃣</div><p class="font-medium">Twice-monthly mailbox deliveries</p></div>
-                <div><div class="text-6xl mb-4">3️⃣</div><p class="font-medium">Unbox letters + real 80s trinkets</p></div>
-                <div><div class="text-6xl mb-4">4️⃣</div><p class="font-medium">Read together & feel the nostalgia</p></div>
-                <div><div class="text-6xl mb-4">5️⃣</div><p class="font-medium">Be Kind… Rewind Time</p></div>
-            </div>
+        <!-- Repeat similar blocks for Mixtape Mayhem, Arcade After Dark, Neon Nights, Rewind Rebellion -->
+        <!-- (add 4 more identical coming-soon cards here if desired) -->
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Inside -->
+  <section class="py-24 bg-gradient-to-b from-black to-gray-900">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h2 class="text-5xl font-black neon-yellow mb-12">WHAT'S INSIDE EVERY DELIVERY</h2>
+      <div class="grid md:grid-cols-5 gap-8 mb-16">
+        <div class="text-6xl">🎟️</div><p class="text-xl">Movie ticket stubs</p>
+        <div class="text-6xl">🧾</div><p class="text-xl">Video rental receipt</p>
+        <div class="text-6xl">📸</div><p class="text-xl">Polaroid photos</p>
+        <div class="text-6xl">🕹️</div><p class="text-xl">Arcade tokens</p>
+        <div class="text-6xl">📰</div><p class="text-xl">Newspaper clippings</p>
+      </div>
+      <p class="text-xl max-w-4xl mx-auto opacity-90">
+        Every piece is carefully crafted to immerse you in another time and place. We pack each envelope to make this a rich, immersive, and satisfying story experience.
+      </p>
+      <!-- Replace src with your actual high-res product photo -->
+      <img src="https://images.unsplash.com/photo-1588345922856-9c6a5e0e7d8e?auto=format&fit=crop&q=80&w=1600" alt="Envelope contents" class="mt-12 rounded-xl shadow-2xl mx-auto max-w-4xl">
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how" class="py-24 bg-black">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h2 class="text-5xl md:text-6xl font-black neon-magenta mb-16">HOW IT WORKS</h2>
+      <div class="grid md:grid-cols-3 gap-12">
+        <div>
+          <div class="text-8xl mb-6">1</div>
+          <h3 class="text-3xl font-bold mb-4">Choose Your Story</h3>
+          <p class="text-lg opacity-80">Pick from available adventures (starting with Neon Heartbreak).</p>
         </div>
-    </section>
+        <div>
+          <div class="text-8xl mb-6">2</div>
+          <h3 class="text-3xl font-bold mb-4">Letters Arrive Twice Monthly</h3>
+          <p class="text-lg opacity-80">24 letters over 12 months, delivered to your mailbox.</p>
+        </div>
+        <div>
+          <div class="text-8xl mb-6">3</div>
+          <h3 class="text-3xl font-bold mb-4">Open, Read & Rewind Time</h3>
+          <p class="text-lg opacity-80">Unbox the envelope, read together, feel the 80s come alive.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Big CTA -->
-    <section id="gift" class="py-20 bg-black text-center">
-        <a href="https://whop.com/the-vhs-letters/80s-video-store-story-subscription/" class="big-cta inline-block bg-[#FEFF38] hover:bg-yellow-300 text-black font-bold text-3xl px-20 py-8 border-8 border-black shadow-[0_0_40px_#FEFF38]">
-           GIFT THIS TO YOUR 80s LOVER NOW – $24.99/MO
-        </a>
-        <p class="mt-6 text-sm opacity-70">Direct checkout — just like theflowerletters.com</p>
-    </section>
+  <!-- Final CTA -->
+  <section class="py-24 bg-gradient-to-r from-red-900 to-black text-center">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-5xl md:text-7xl font-black mb-10">YOUR 80s STORY AWAITS</h2>
+      <a href="https://whop.com/the-vhs-letters/80s-video-store-story-subscription/"
+         class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold text-3xl px-20 py-8 rounded-xl shadow-2xl transition transform hover:scale-105">
+        START TODAY
+      </a>
+    </div>
+  </section>
 
-    <footer class="bg-black py-12 text-center text-xs border-t border-cyan-900">
-        © 2026 <a href="https://vhsletters.com" class="hover:text-cyan-400">vhsletters.com</a> • Made with real cassette tapes and love
-    </footer>
+  <!-- Footer -->
+  <footer class="bg-black py-16 border-t border-cyan-900">
+    <div class="max-w-7xl mx-auto px-6 text-center text-sm opacity-70">
+      <p class="mb-6">© 2026 VHS Letters • Made with 80s nostalgia in the USA</p>
+      <div class="flex flex-wrap justify-center gap-6 mb-8">
+        <a href="#how" class="hover:text-cyan-400">How It Works</a>
+        <a href="#stories" class="hover:text-cyan-400">Stories</a>
+        <a href="#faq" class="hover:text-cyan-400">FAQ</a>
+        <a href="/terms" class="hover:text-cyan-400">Terms of Service</a>
+        <a href="/privacy" class="hover:text-cyan-400">Privacy Policy</a>
+        <a href="/shipping" class="hover:text-cyan-400">Shipping Policy</a>
+        <a href="/mailing" class="hover:text-cyan-400">Mailing Policy</a>
+      </div>
+      <!-- FAQ placeholder -->
+      <div id="faq" class="mt-12 text-left max-w-4xl mx-auto">
+        <h3 class="text-3xl font-bold mb-8 neon-cyan">Frequently Asked Questions</h3>
+        <div class="space-y-6">
+          <div>
+            <h4 class="text-xl font-bold">What is VHS Letters?</h4>
+            <p>A subscription delivering one complete 80s-themed story through 24 physical letters over 12 months (2 per month).</p>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold">How much does it cost?</h4>
+            <p>$13 per month or $99 annually (billed via Whop).</p>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold">What do I get in each delivery?</h4>
+            <p>One or more letters advancing the story, plus carefully curated 80s-era items: movie ticket stubs, video rental receipt, Polaroid photos, arcade tokens, newspaper clippings.</p>
+          </div>
+          <!-- add more FAQ items as needed -->
+        </div>
+      </div>
+    </div>
+  </footer>
 
-    <script src="js/script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

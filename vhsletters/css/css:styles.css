@@ -1,42 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@500;700&display=swap');
 
-body { font-family: system-ui, sans-serif; }
+.neon {
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0 0 10px #00f3ff, 0 0 20px #00f3ff, 0 0 40px #00f3ff;
+  animation: flicker 3s infinite alternate;
+}
 
-.neon-cyan { text-shadow: 0 0 10px #00F3FF, 0 0 20px #00F3FF, 0 0 40px #00F3FF; animation: neon-flicker 1.5s infinite alternate; }
-.neon-yellow { text-shadow: 0 0 10px #FEFF38, 0 0 20px #FEFF38, 0 0 40px #FEFF38; }
+.neon-yellow { text-shadow: 0 0 10px #ffea00, 0 0 20px #ffea00, 0 0 40px #ffea00; }
+.neon-magenta { text-shadow: 0 0 10px #ff00aa, 0 0 20px #ff00aa, 0 0 40px #ff00aa; }
+.neon-cyan { text-shadow: 0 0 10px #00f3ff, 0 0 20px #00f3ff, 0 0 40px #00f3ff; }
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.95; }
+}
+
+html { scroll-behavior: smooth; }
 
 .vhs-scan::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(transparent 50%, rgba(255,255,255,0.08) 50%);
-    background-size: 100% 6px; animation: scan 3s linear infinite;
-    pointer-events: none; z-index: 10;
-}
-@keyframes scan { 0% { background-position: 0 0; } 100% { background-position: 0 600px; } }
-
-.story-card {
-    transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
-}
-.story-card:hover {
-    transform: scale(1.04) rotate(1deg);
-    box-shadow: 0 0 40px #00F3FF;
-    filter: brightness(1.2);
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(transparent 0%, transparent 49%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0.04) 51%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  animation: scan 8s linear infinite;
 }
 
-.coming-soon {
-    position: absolute; top: 20px; right: 20px; background: #FF0033; color: white;
-    padding: 4px 12px; font-size: 12px; transform: rotate(12deg);
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
 }
 
-.glitch { animation: glitch 0.4s linear infinite; }
+/* Optional VHS glitch on hover or timed */
+.glitch:hover {
+  animation: glitch 0.4s linear infinite;
+}
+
 @keyframes glitch {
-    2%, 64% { transform: translate(2px,0) skew(0deg); }
-    4%, 60% { transform: translate(-2px,0) skew(0deg); }
-}
-
-.big-cta {
-    animation: pulse 2s infinite;
-}
-@keyframes pulse {
-    0%, 100% { box-shadow: 0 0 30px #FEFF38; }
-    50% { box-shadow: 0 0 60px #FEFF38; }
+  0% { transform: translate(0); }
+  20% { transform: translate(-4px, 4px); }
+  40% { transform: translate(4px, -4px); }
+  60% { transform: translate(-4px, 0); }
+  80% { transform: translate(4px, 4px); }
+  100% { transform: translate(0); }
 }

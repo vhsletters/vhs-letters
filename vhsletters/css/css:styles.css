@@ -1,21 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@500;700&display=swap');
 
-.neon {
-  font-family: 'Orbitron', sans-serif;
-  text-shadow: 0 0 10px #00f3ff, 0 0 20px #00f3ff, 0 0 40px #00f3ff;
-  animation: flicker 3s infinite alternate;
-}
-
-.neon-yellow { text-shadow: 0 0 10px #ffea00, 0 0 20px #ffea00, 0 0 40px #ffea00; }
-.neon-magenta { text-shadow: 0 0 10px #ff00aa, 0 0 20px #ff00aa, 0 0 40px #ff00aa; }
-.neon-cyan { text-shadow: 0 0 10px #00f3ff, 0 0 20px #00f3ff, 0 0 40px #00f3ff; }
-
-@keyframes flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.95; }
-}
+.neon-cyan { text-shadow: 0 0 15px #00f3ff, 0 0 30px #00f3ff; }
+.neon-yellow { text-shadow: 0 0 15px #ffea00, 0 0 30px #ffea00; }
+.neon-magenta { text-shadow: 0 0 15px #ff00aa, 0 0 30px #ff00aa; }
 
 html { scroll-behavior: smooth; }
+
+.story-card {
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.story-card:hover {
+  transform: scale(1.05) rotate(1deg);
+  box-shadow: 0 0 60px #00f3ff;
+}
 
 .vhs-scan::after {
   content: '';
@@ -26,22 +23,7 @@ html { scroll-behavior: smooth; }
   pointer-events: none;
   animation: scan 8s linear infinite;
 }
-
 @keyframes scan {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(100%); }
-}
-
-/* Optional VHS glitch on hover or timed */
-.glitch:hover {
-  animation: glitch 0.4s linear infinite;
-}
-
-@keyframes glitch {
-  0% { transform: translate(0); }
-  20% { transform: translate(-4px, 4px); }
-  40% { transform: translate(4px, -4px); }
-  60% { transform: translate(-4px, 0); }
-  80% { transform: translate(4px, 4px); }
-  100% { transform: translate(0); }
 }

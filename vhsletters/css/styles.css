@@ -4,7 +4,7 @@
    ============================================================ */
 
 /* --- Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* --- Custom Properties --- */
 :root {
@@ -19,9 +19,9 @@
   /* Accent colors */
   --color-amber:        #d4a04a;
   --color-amber-light:  #e8be7a;
-  --color-red:          #c0392b;
-  --color-red-hover:    #e74c3c;
-  --color-red-glow:     rgba(192, 57, 43, 0.35);
+  --color-cta:          #d4a04a;
+  --color-cta-hover:    #e8be7a;
+  --color-cta-glow:     rgba(212, 160, 74, 0.3);
   --color-teal:         #5eaba3;
   --color-teal-muted:   #3d7a74;
   --color-rose:         #c97b84;
@@ -33,7 +33,7 @@
   --color-cream:        #faf6f1;
 
   /* Typography */
-  --font-display:       'Syne', sans-serif;
+  --font-display:       'Bebas Neue', sans-serif;
   --font-body:          'Figtree', sans-serif;
   --font-mono:          'JetBrains Mono', monospace;
 
@@ -111,15 +111,17 @@ ul, ol {
 /* --- Typography --- */
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.15;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.03em;
   color: var(--color-cream);
+  padding-bottom: 0.05em;
 }
 
-h1 { font-size: clamp(2rem, 6vw, 3.5rem); }
-h2 { font-size: clamp(1.6rem, 4.5vw, 2.6rem); }
-h3 { font-size: clamp(1.15rem, 3vw, 1.5rem); }
-h4 { font-size: 1.05rem; }
+h1 { font-size: clamp(2.4rem, 7vw, 4.2rem); }
+h2 { font-size: clamp(1.8rem, 5vw, 3rem); }
+h3 { font-size: clamp(1.3rem, 3.5vw, 1.8rem); }
+h4 { font-size: 1.2rem; }
 
 p {
   max-width: 65ch;
@@ -188,22 +190,24 @@ body::after {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  flex-shrink: 0;
 }
 
 .nav__logo {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: var(--radius-sm);
   object-fit: cover;
 }
 
 .nav__title {
   font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: 0.12em;
+  font-weight: 400;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-cream);
+  line-height: 1.2;
 }
 
 .nav__links {
@@ -314,9 +318,9 @@ body::after {
   justify-content: center;
   gap: var(--space-sm);
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 0.04em;
+  font-weight: 400;
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
   padding: 1rem 2rem;
   border-radius: var(--radius-full);
   transition: all var(--transition);
@@ -325,16 +329,16 @@ body::after {
 }
 
 .btn--primary {
-  background: var(--color-red);
-  color: #fff;
-  box-shadow: 0 4px 24px var(--color-red-glow),
+  background: var(--color-cta);
+  color: var(--color-bg);
+  box-shadow: 0 4px 24px var(--color-cta-glow),
               0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .btn--primary:hover {
-  background: var(--color-red-hover);
+  background: var(--color-cta-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px var(--color-red-glow),
+  box-shadow: 0 8px 32px var(--color-cta-glow),
               0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
@@ -344,13 +348,13 @@ body::after {
 
 .btn--secondary {
   background: transparent;
-  color: var(--color-amber);
-  border: 2px solid var(--color-amber);
+  color: var(--color-cream);
+  border: 2px solid var(--color-border-light);
 }
 
 .btn--secondary:hover {
-  background: var(--color-amber);
-  color: var(--color-bg);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-cream);
 }
 
 .btn--small {
@@ -359,7 +363,7 @@ body::after {
 }
 
 .btn--large {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   padding: 1.15rem 2.5rem;
 }
 
@@ -451,11 +455,13 @@ body::after {
 }
 
 .hero__heading {
-  font-size: clamp(2.2rem, 7vw, 3.8rem);
-  font-weight: 800;
-  line-height: 1.08;
+  font-size: clamp(3rem, 9vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
   margin-bottom: var(--space-lg);
   color: var(--color-cream);
+  overflow: visible;
 }
 
 .hero__heading em {
@@ -536,7 +542,7 @@ body::after {
 
 @media (min-width: 1024px) {
   .hero__heading {
-    font-size: 3.5rem;
+    font-size: 5.5rem;
   }
 }
 
@@ -572,7 +578,7 @@ body::after {
 
 .trust-bar__label {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 400;
   font-size: 0.8rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -600,9 +606,9 @@ body::after {
 }
 
 .proof__quote {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: clamp(1.2rem, 3.5vw, 1.7rem);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.5;
   color: var(--color-cream);
   max-width: 700px;
@@ -660,7 +666,7 @@ body::after {
 
 .how__number {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 400;
   font-size: 3rem;
   color: var(--color-amber);
   opacity: 0.3;
@@ -1017,7 +1023,7 @@ body::after {
   color: var(--color-cream);
   font-size: 1.6rem;
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 400;
 }
 
 
@@ -1123,7 +1129,7 @@ body::after {
 
 .footer__brand-name {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 400;
   font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;

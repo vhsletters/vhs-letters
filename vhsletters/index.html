@@ -48,14 +48,26 @@
       "@type": "Brand",
       "name": "VHS Letters"
     },
-    "offers": {
-      "@type": "Offer",
-      "url": "https://whop.com/the-vhs-letters/80s-video-store-story-subscription/",
-      "priceCurrency": "USD",
-      "price": "13.00",
-      "priceValidUntil": "2027-12-31",
-      "availability": "https://schema.org/InStock"
-    }
+    "offers": [
+      {
+        "@type": "Offer",
+        "url": "https://whop.com/checkout/plan_zBrA7pU4rRMqQ",
+        "priceCurrency": "USD",
+        "price": "13.00",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "name": "Monthly"
+      },
+      {
+        "@type": "Offer",
+        "url": "https://whop.com/checkout/plan_vXpvP1SRQLRm4",
+        "priceCurrency": "USD",
+        "price": "99.00",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "name": "Annual"
+      }
+    ]
   }
   </script>
 
@@ -115,6 +127,141 @@
   <!-- Skip to content (accessibility) -->
   <a href="#main" class="skip-link">Skip to main content</a>
 
+
+  <!-- ============================================================
+       CHANGED: Multi-Plan Whop Checkout Embed + Modal Overlay
+       Replaces all individual href checkout links site-wide.
+       Plans: $13/mo = plan_zBrA7pU4rRMqQ | $99/yr = plan_vXpvP1SRQLRm4
+       All CTA buttons now call openCheckout() instead of href links.
+  =============================================================== -->
+  <script src="https://js.whop.com/static/checkout/loader.js" async defer></script>
+
+  <!-- CHANGED: Fullscreen modal wrapper (hidden by default) -->
+  <div id="wd-checkout-modal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.75); overflow-y:auto;">
+    <div style="display:flex; justify-content:center; align-items:flex-start; min-height:100%; padding:32px 16px;">
+
+      <!-- Close button -->
+      <button
+        onclick="document.getElementById('wd-checkout-modal').style.display='none'; document.body.style.overflow='';"
+        aria-label="Close checkout"
+        style="position:fixed; top:16px; right:20px; background:none; border:none; color:#fff; font-size:28px; cursor:pointer; z-index:10000; line-height:1;">
+        &times;
+      </button>
+
+      <!-- Embed widget -->
+      <div class="wd-modal" role="dialog" aria-label="Checkout plan selector" style="max-width:480px; width:100%;">
+
+        <div class="wd-plan-options" role="radiogroup" aria-label="Choose your plan">
+          <h3 class="wd-products-title">Choose your plan</h3>
+          <label class="wd-plan-card">
+            <input type="radio" name="wd_plan" value="1300month" checked />
+            <div class="wd-plan-body">
+              <div class="wd-plan-title">$13.00&#x2F;month</div>
+            </div>
+          </label>
+          <label class="wd-plan-card">
+            <input type="radio" name="wd_plan" value="annual9900year" />
+            <div class="wd-plan-body">
+              <div class="wd-plan-title">Annual - $99.00&#x2F;year</div>
+            </div>
+          </label>
+        </div>
+
+        <div id="whop-checkout-wrapper"></div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CHANGED: Checkout embed + modal control scripts -->
+  <script>
+    (() => {
+      const LIVE_HOST = location.hostname;
+      const wrapper = document.getElementById('whop-checkout-wrapper');
+      const radios = Array.from(document.querySelectorAll('input[name="wd_plan"]'));
+
+      const plans = [
+        { radioValue: '1300month',      planId: 'https://whop.com/checkout/plan_zBrA7pU4rRMqQ'  },
+        { radioValue: 'annual9900year', planId: 'https://whop.com/checkout/plan_vXpvP1SRQLRm4' }
+      ];
+
+      function getPlanId() {
+        const sel = radios.find(r => r.checked)?.value || plans[0].radioValue;
+        return (plans.find(p => p.radioValue === sel) || plans[0]).planId;
+      }
+
+      function mountCheckout(planId) {
+        const old = wrapper.querySelector('.whop-checkout-embed');
+        if (old) old.remove();
+        const mount = document.createElement('div');
+        mount.className = 'whop-checkout-embed';
+        mount.setAttribute('data-whop-checkout-plan-id', planId);
+        mount.setAttribute('data-whop-checkout-theme', 'dark');
+        mount.setAttribute('data-whop-checkout-theme-accent-color', 'blue');
+        mount.setAttribute('data-whop-checkout-host', LIVE_HOST);
+        wrapper.appendChild(mount);
+        window.whopCheckoutLoader?.scan?.();
+      }
+
+      function ensureLoader(callback) {
+        if (window.whopCheckoutLoader?.scan) { callback(); return; }
+        const existing = document.querySelector('script[src*="js.whop.com"]');
+        if (existing) { existing.addEventListener('load', callback, { once: true }); return; }
+        const script = document.createElement('script');
+        script.src = 'https://js.whop.com/static/checkout/loader.js';
+        script.async = true; script.defer = true;
+        script.onload = callback; script.onerror = () => callback();
+        document.head.appendChild(script);
+      }
+
+      function render() { mountCheckout(getPlanId()); }
+
+      function init() {
+        render();
+        ensureLoader(() => window.whopCheckoutLoader?.scan?.());
+        radios.forEach(r => r.addEventListener('change', render));
+      }
+
+      if (document.readyState !== 'loading') init();
+      else document.addEventListener('DOMContentLoaded', init);
+    })();
+
+    // Global function called by all CTA buttons
+    function openCheckout() {
+      document.getElementById('wd-checkout-modal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close on backdrop click
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('wd-checkout-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  </script>
+
+  <!-- CHANGED: Checkout embed styles -->
+  <style>
+    :root { --wd-accent: #0090ff; --wd-border: #374151; --wd-bg: #000000; --wd-text: #f9fafb; }
+    .wd-modal { width:100%; background:var(--wd-bg); border-radius:12px; box-shadow:0 10px 30px -10px rgba(0,0,0,0.3); display:flex; flex-direction:column; }
+    .wd-plan-options { padding: 24px 24px 12px; display: grid; gap: 12px; }
+    .wd-products-title { margin: 0 0 4px 0; font-size: 20px; font-weight: 700; color: var(--wd-text); }
+    .wd-plan-card { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: flex-start; padding: 16px; border: 2px solid var(--wd-border); border-radius: 12px; cursor: pointer; transition: all 0.2s ease; color: var(--wd-text); }
+    .wd-plan-card:hover { border-color: var(--wd-accent); }
+    .wd-plan-card input[type="radio"] { accent-color: var(--wd-accent); margin-top: 2px; }
+    .wd-plan-card:has(input[type="radio"]:checked) { border-color: var(--wd-accent); background: color-mix(in srgb, var(--wd-accent) 6%, transparent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--wd-accent) 18%, transparent); }
+    .wd-plan-body { display: grid; gap: 4px; }
+    .wd-plan-title { font-weight: 700; font-size: 16px; }
+    .wd-plan-description { font-size: 14px; opacity: 0.8; }
+    .wd-plan-price { font-size: 14px; font-weight: 600; color: var(--wd-accent); }
+    #whop-checkout-wrapper { padding: 0 24px 24px; }
+  </style>
+  <!-- END checkout embed -->
+
+
   <!-- ========== NAVIGATION ========== -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="nav__inner container">
@@ -130,10 +277,10 @@
         <a href="#faq">FAQ</a>
       </div>
 
-      <a href="https://whop.com/the-vhs-letters/80s-video-store-story-subscription/"
-         class="btn btn--primary btn--small nav__cta">
+      <!-- CHANGED: was <a href="..."> now opens modal -->
+      <button onclick="openCheckout()" class="btn btn--primary btn--small nav__cta">
         Start a Subscription
-      </a>
+      </button>
 
       <!-- Mobile toggle -->
       <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -148,10 +295,10 @@
         <a href="#whats-inside" role="menuitem">What's Inside</a>
         <a href="#stories" role="menuitem">Stories</a>
         <a href="#faq" role="menuitem">FAQ</a>
-        <a href="https://whop.com/the-vhs-letters/80s-video-store-story-subscription/"
-           class="btn btn--primary" role="menuitem">
+        <!-- CHANGED: was <a href="..."> now opens modal -->
+        <button onclick="openCheckout()" class="btn btn--primary" role="menuitem">
           Start a Subscription
-        </a>
+        </button>
       </div>
     </div>
   </nav>
@@ -178,10 +325,10 @@
           </p>
 
           <div class="hero__cta-group">
-            <a href="https://whop.com/the-vhs-letters/80s-video-store-story-subscription/"
-               class="btn btn--primary btn--large">
+            <!-- CHANGED: was <a href="..."> now opens modal -->
+            <button onclick="openCheckout()" class="btn btn--primary btn--large">
               Start Your Story <span class="btn__price">— $13/mo</span>
-            </a>
+            </button>
             <a href="#how-it-works" class="btn btn--secondary btn--large">
               See How It Works
             </a>
@@ -350,13 +497,14 @@
               <span class="story-card__badge story-card__badge--live">● Available Now</span>
               <h3 class="story-card__title">Neon Heartbreak</h3>
               <p class="story-card__genre">Romance · Coming of Age · 1987</p>
+              <!-- EDIT NEON HEARTBREAK DESCRIPTION HERE -->
               <p class="story-card__desc">
                 Two teenagers navigate neon-lit nights, first love, and the bittersweet ache of a summer that changes everything. Set against the backdrop of a small-town video store, this story captures the raw emotion and big feelings nobody was embarrassed to have.
               </p>
-              <a href="https://whop.com/the-vhs-letters/80s-video-store-story-subscription/"
-                 class="btn btn--primary">
+              <!-- CHANGED: was <a href="..."> now opens modal -->
+              <button onclick="openCheckout()" class="btn btn--primary">
                 Choose This Story <span class="btn__price">— $13/mo</span>
-              </a>
+              </button>
             </div>
           </article>
 
@@ -433,10 +581,10 @@
             Whether it's for yourself or the 80s lover in your life — give something worth looking forward to every single month. No batteries required. No screens involved. Just real letters, real nostalgia, and a story worth rewinding for.
           </p>
 
-          <a href="https://whop.com/the-vhs-letters/80s-video-store-story-subscription/"
-             class="btn btn--primary btn--large">
+          <!-- CHANGED: was <a href="..."> now opens modal -->
+          <button onclick="openCheckout()" class="btn btn--primary btn--large">
             Start a Subscription
-          </a>
+          </button>
 
           <p class="gift-cta__price">
             <strong>$13</strong>/month · or save with <strong>$99</strong>/year

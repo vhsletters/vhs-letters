@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <!-- Primary SEO -->
   <title>VHS Letters — Be Kind. Rewind Time.</title>
   <meta name="description" content="An immersive 80s story told through handcrafted letters — packed with movie stubs, polaroid photos, and vintage surprises. Delivered monthly, all year long. The ultimate gift for the 80s lover in your life.">
   <meta name="keywords" content="80s gift, VHS nostalgia, retro gift, nostalgic subscription, 80s lover gift, physical mail story, subscription box 80s, unique gift idea, nostalgia gift, retro letters">
   <link rel="canonical" href="https://vhsletters.com/">
-
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://vhsletters.com/">
@@ -18,25 +16,21 @@
   <meta property="og:image" content="https://vhsletters.com/assets/vhs-hero.jpg">
   <meta property="og:image:width" content="1376">
   <meta property="og:image:height" content="768">
-
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="VHS Letters — Be Kind. Rewind Time.">
   <meta name="twitter:description" content="An immersive 80s story told through handcrafted letters, movie stubs, and polaroid photos. Delivered monthly.">
   <meta name="twitter:image" content="https://vhsletters.com/assets/vhs-hero.jpg">
-
   <!-- Favicon -->
   <link rel="icon" href="assets/vhs-icon.jpg" type="image/avif">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
   <!-- Preconnect for fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
-
   <!-- Schema.org Product Markup -->
+  <!-- ✅ CHANGED: offers.url updated from old whop link to new monthly plan -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -70,7 +64,6 @@
     ]
   }
   </script>
-
   <!-- Schema.org FAQ Markup (for rich snippets) -->
   <script type="application/ld+json">
   {
@@ -121,147 +114,9 @@
   }
   </script>
 </head>
-
 <body>
-
   <!-- Skip to content (accessibility) -->
   <a href="#main" class="skip-link">Skip to main content</a>
-
-
-  <!-- ============================================================
-       CHANGED: Multi-Plan Whop Checkout Embed + Modal Overlay
-       Replaces all individual href checkout links site-wide.
-       Plans: $13/mo = plan_zBrA7pU4rRMqQ | $99/yr = plan_vXpvP1SRQLRm4
-       All CTA buttons now call openCheckout() instead of href links.
-  =============================================================== -->
-  <script src="https://js.whop.com/static/checkout/loader.js" async defer></script>
-
-  <!-- CHANGED: Fullscreen modal wrapper (hidden by default) -->
-  <div id="wd-checkout-modal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.75); overflow-y:auto;">
-    <div style="display:flex; justify-content:center; align-items:flex-start; min-height:100%; padding:32px 16px;">
-
-      <!-- Close button -->
-      <button
-        onclick="document.getElementById('wd-checkout-modal').style.display='none'; document.body.style.overflow='';"
-        aria-label="Close checkout"
-        style="position:fixed; top:16px; right:20px; background:none; border:none; color:#fff; font-size:28px; cursor:pointer; z-index:10000; line-height:1;">
-        &times;
-      </button>
-
-      <!-- Embed widget -->
-      <div class="wd-modal" role="dialog" aria-label="Checkout plan selector" style="max-width:480px; width:100%;">
-
-        <div class="wd-plan-options" role="radiogroup" aria-label="Choose your plan">
-          <h3 class="wd-products-title">Choose your plan</h3>
-          <label class="wd-plan-card">
-            <input type="radio" name="wd_plan" value="1300month" checked />
-            <div class="wd-plan-body">
-              <div class="wd-plan-title">$13.00&#x2F;month</div>
-            </div>
-          </label>
-          <label class="wd-plan-card">
-            <input type="radio" name="wd_plan" value="annual9900year" />
-            <div class="wd-plan-body">
-              <div class="wd-plan-title">Annual - $99.00&#x2F;year</div>
-            </div>
-          </label>
-        </div>
-
-        <div id="whop-checkout-wrapper"></div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- CHANGED: Checkout embed + modal control scripts -->
-  <script>
-    (() => {
-      const LIVE_HOST = location.hostname;
-      const wrapper = document.getElementById('whop-checkout-wrapper');
-      const radios = Array.from(document.querySelectorAll('input[name="wd_plan"]'));
-
-      const plans = [
-        { radioValue: '1300month',      planId: 'https://whop.com/checkout/plan_zBrA7pU4rRMqQ'  },
-        { radioValue: 'annual9900year', planId: 'https://whop.com/checkout/plan_vXpvP1SRQLRm4' }
-      ];
-
-      function getPlanId() {
-        const sel = radios.find(r => r.checked)?.value || plans[0].radioValue;
-        return (plans.find(p => p.radioValue === sel) || plans[0]).planId;
-      }
-
-      function mountCheckout(planId) {
-        const old = wrapper.querySelector('.whop-checkout-embed');
-        if (old) old.remove();
-        const mount = document.createElement('div');
-        mount.className = 'whop-checkout-embed';
-        mount.setAttribute('data-whop-checkout-plan-id', planId);
-        mount.setAttribute('data-whop-checkout-theme', 'dark');
-        mount.setAttribute('data-whop-checkout-theme-accent-color', 'blue');
-        mount.setAttribute('data-whop-checkout-host', LIVE_HOST);
-        wrapper.appendChild(mount);
-        window.whopCheckoutLoader?.scan?.();
-      }
-
-      function ensureLoader(callback) {
-        if (window.whopCheckoutLoader?.scan) { callback(); return; }
-        const existing = document.querySelector('script[src*="js.whop.com"]');
-        if (existing) { existing.addEventListener('load', callback, { once: true }); return; }
-        const script = document.createElement('script');
-        script.src = 'https://js.whop.com/static/checkout/loader.js';
-        script.async = true; script.defer = true;
-        script.onload = callback; script.onerror = () => callback();
-        document.head.appendChild(script);
-      }
-
-      function render() { mountCheckout(getPlanId()); }
-
-      function init() {
-        render();
-        ensureLoader(() => window.whopCheckoutLoader?.scan?.());
-        radios.forEach(r => r.addEventListener('change', render));
-      }
-
-      if (document.readyState !== 'loading') init();
-      else document.addEventListener('DOMContentLoaded', init);
-    })();
-
-    // Global function called by all CTA buttons
-    function openCheckout() {
-      document.getElementById('wd-checkout-modal').style.display = 'block';
-      document.body.style.overflow = 'hidden';
-    }
-
-    // Close on backdrop click
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('wd-checkout-modal').addEventListener('click', function(e) {
-        if (e.target === this) {
-          this.style.display = 'none';
-          document.body.style.overflow = '';
-        }
-      });
-    });
-  </script>
-
-  <!-- CHANGED: Checkout embed styles -->
-  <style>
-    :root { --wd-accent: #0090ff; --wd-border: #374151; --wd-bg: #000000; --wd-text: #f9fafb; }
-    .wd-modal { width:100%; background:var(--wd-bg); border-radius:12px; box-shadow:0 10px 30px -10px rgba(0,0,0,0.3); display:flex; flex-direction:column; }
-    .wd-plan-options { padding: 24px 24px 12px; display: grid; gap: 12px; }
-    .wd-products-title { margin: 0 0 4px 0; font-size: 20px; font-weight: 700; color: var(--wd-text); }
-    .wd-plan-card { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: flex-start; padding: 16px; border: 2px solid var(--wd-border); border-radius: 12px; cursor: pointer; transition: all 0.2s ease; color: var(--wd-text); }
-    .wd-plan-card:hover { border-color: var(--wd-accent); }
-    .wd-plan-card input[type="radio"] { accent-color: var(--wd-accent); margin-top: 2px; }
-    .wd-plan-card:has(input[type="radio"]:checked) { border-color: var(--wd-accent); background: color-mix(in srgb, var(--wd-accent) 6%, transparent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--wd-accent) 18%, transparent); }
-    .wd-plan-body { display: grid; gap: 4px; }
-    .wd-plan-title { font-weight: 700; font-size: 16px; }
-    .wd-plan-description { font-size: 14px; opacity: 0.8; }
-    .wd-plan-price { font-size: 14px; font-weight: 600; color: var(--wd-accent); }
-    #whop-checkout-wrapper { padding: 0 24px 24px; }
-  </style>
-  <!-- END checkout embed -->
-
-
   <!-- ========== NAVIGATION ========== -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="nav__inner container">
@@ -269,78 +124,65 @@
         <img src="assets/vhs-icon.jpg" alt="" class="nav__logo" width="32" height="32">
         <span class="nav__title">VHS Letters</span>
       </a>
-
       <div class="nav__links">
         <a href="#how-it-works">How It Works</a>
         <a href="#whats-inside">What's Inside</a>
         <a href="#stories">Stories</a>
         <a href="#faq">FAQ</a>
       </div>
-
-      <!-- CHANGED: was <a href="..."> now opens modal -->
-      <button onclick="openCheckout()" class="btn btn--primary btn--small nav__cta">
+      <!-- ✅ CHANGED: old whop link removed, replaced with checkout embed anchor -->
+      <a href="#whop-checkout" class="btn btn--primary btn--small nav__cta">
         Start a Subscription
-      </button>
-
+      </a>
       <!-- Mobile toggle -->
       <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
       </button>
-
       <!-- Mobile menu -->
       <div class="nav__mobile" role="menu">
         <a href="#how-it-works" role="menuitem">How It Works</a>
         <a href="#whats-inside" role="menuitem">What's Inside</a>
         <a href="#stories" role="menuitem">Stories</a>
         <a href="#faq" role="menuitem">FAQ</a>
-        <!-- CHANGED: was <a href="..."> now opens modal -->
-        <button onclick="openCheckout()" class="btn btn--primary" role="menuitem">
+        <!-- ✅ CHANGED: old whop link removed, replaced with checkout embed anchor -->
+        <a href="#whop-checkout" class="btn btn--primary" role="menuitem">
           Start a Subscription
-        </button>
+        </a>
       </div>
     </div>
   </nav>
-
-
   <main id="main">
-
     <!-- ========== HERO ========== -->
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero__bg" aria-hidden="true">
         <img src="assets/vhs-hero.jpg" alt="" width="1376" height="768">
       </div>
-
       <div class="hero__content">
         <div class="hero__text">
           <span class="hero__badge">Now Accepting Subscribers</span>
-
           <h1 id="hero-heading" class="hero__heading">
             Be Kind. <em>Rewind Time.</em>
           </h1>
-
           <p class="hero__sub">
             Something from 1987 is waiting in your mailbox. An immersive story told through handcrafted letters — packed with movie stubs, polaroid photos, and surprises straight from the 80s. Delivered monthly, all year long.
           </p>
-
           <div class="hero__cta-group">
-            <!-- CHANGED: was <a href="..."> now opens modal -->
-            <button onclick="openCheckout()" class="btn btn--primary btn--large">
+            <!-- ✅ CHANGED: old whop link removed, replaced with checkout embed anchor -->
+            <a href="#whop-checkout" class="btn btn--primary btn--large">
               Start Your Story <span class="btn__price">— $13/mo</span>
-            </button>
+            </a>
             <a href="#how-it-works" class="btn btn--secondary btn--large">
               See How It Works
             </a>
           </div>
-
           <div class="hero__trust">
             <span>Cancel anytime</span>
             <span>30-day money-back guarantee</span>
             <span>Ships to your door</span>
           </div>
         </div>
-
         <div class="hero__image">
           <img src="assets/vhs-hero.jpg"
                alt="A bundle of handwritten letters tied with twine, alongside a VHS tape labeled Memories 1987, vintage movie ticket stubs, and a video rental receipt"
@@ -349,8 +191,6 @@
         </div>
       </div>
     </section>
-
-
     <!-- ========== TRUST BAR ========== -->
     <section class="trust-bar" aria-label="Trust signals">
       <div class="trust-bar__inner container">
@@ -376,8 +216,6 @@
         </div>
       </div>
     </section>
-
-
     <!-- ========== SOCIAL PROOF QUOTE ========== -->
     <section class="proof section--tight container reveal" aria-label="Customer testimonial">
       <blockquote class="proof__quote">
@@ -385,8 +223,6 @@
       </blockquote>
       <p class="proof__attr">— Sarah M., verified subscriber</p>
     </section>
-
-
     <!-- ========== HOW IT WORKS ========== -->
     <section id="how-it-works" class="how section" aria-labelledby="how-heading">
       <div class="container">
@@ -394,7 +230,6 @@
           <span class="how__label">How It Works</span>
           <h2 id="how-heading">Three Steps to Send Them Back in Time</h2>
         </div>
-
         <div class="how__grid reveal-stagger">
           <div class="how__step">
             <div class="how__number" aria-hidden="true">01</div>
@@ -414,8 +249,6 @@
         </div>
       </div>
     </section>
-
-
     <!-- ========== WHAT'S INSIDE ========== -->
     <section id="whats-inside" class="showcase section" aria-labelledby="showcase-heading">
       <div class="container">
@@ -426,12 +259,10 @@
                  width="1376" height="768"
                  loading="lazy">
           </div>
-
           <div class="showcase__text reveal">
             <span class="showcase__label">What's Inside</span>
             <h2 id="showcase-heading">Every Delivery Is a Time Capsule</h2>
             <p>We don't just send letters. We recreate the feeling of finding a box of memories in your parents' attic — the kind that stops you in your tracks and pulls you right back to 1987.</p>
-
             <div class="showcase__items">
               <div class="showcase__item">
                 <span class="showcase__item-icon" aria-hidden="true">📝</span>
@@ -480,8 +311,6 @@
         </div>
       </div>
     </section>
-
-
     <!-- ========== STORIES ========== -->
     <section id="stories" class="stories section" aria-labelledby="stories-heading">
       <div class="container">
@@ -489,7 +318,6 @@
           <span class="stories__label">Choose Your Story</span>
           <h2 id="stories-heading">Pick Your 80s Adventure</h2>
         </div>
-
         <div class="stories__grid reveal-stagger">
           <!-- LIVE STORY -->
           <article class="story-card story-card--live">
@@ -497,17 +325,15 @@
               <span class="story-card__badge story-card__badge--live">● Available Now</span>
               <h3 class="story-card__title">Neon Heartbreak</h3>
               <p class="story-card__genre">Romance · Coming of Age · 1987</p>
-              <!-- EDIT NEON HEARTBREAK DESCRIPTION HERE -->
               <p class="story-card__desc">
                 Two teenagers navigate neon-lit nights, first love, and the bittersweet ache of a summer that changes everything. Set against the backdrop of a small-town video store, this story captures the raw emotion and big feelings nobody was embarrassed to have.
               </p>
-              <!-- CHANGED: was <a href="..."> now opens modal -->
-              <button onclick="openCheckout()" class="btn btn--primary">
+              <!-- ✅ CHANGED: old whop link removed, replaced with checkout embed anchor -->
+              <a href="#whop-checkout" class="btn btn--primary">
                 Choose This Story <span class="btn__price">— $13/mo</span>
-              </button>
+              </a>
             </div>
           </article>
-
           <!-- COMING SOON -->
           <article class="story-card story-card--coming">
             <div class="story-card__body">
@@ -519,7 +345,6 @@
               </p>
             </div>
           </article>
-
           <article class="story-card story-card--coming">
             <div class="story-card__body">
               <span class="story-card__badge story-card__badge--soon">Coming Soon</span>
@@ -533,8 +358,6 @@
         </div>
       </div>
     </section>
-
-
     <!-- ========== TESTIMONIALS ========== -->
     <section class="testimonials section" aria-labelledby="reviews-heading">
       <div class="container">
@@ -542,7 +365,6 @@
           <span class="testimonials__label">What People Are Saying</span>
           <h2 id="reviews-heading">Real Stories from Real Mailboxes</h2>
         </div>
-
         <div class="testimonials__grid reveal-stagger">
           <div class="testimonial">
             <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
@@ -551,7 +373,6 @@
             </p>
             <p class="testimonial__author"><strong>Jessica R.</strong> · Gifted to her father</p>
           </div>
-
           <div class="testimonial">
             <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
             <p class="testimonial__text">
@@ -559,7 +380,6 @@
             </p>
             <p class="testimonial__author"><strong>Dave K.</strong> · Subscriber</p>
           </div>
-
           <div class="testimonial">
             <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
             <p class="testimonial__text">
@@ -570,8 +390,6 @@
         </div>
       </div>
     </section>
-
-
     <!-- ========== GIFT CTA ========== -->
     <section class="gift-cta section" aria-labelledby="gift-heading">
       <div class="container">
@@ -580,20 +398,16 @@
           <p>
             Whether it's for yourself or the 80s lover in your life — give something worth looking forward to every single month. No batteries required. No screens involved. Just real letters, real nostalgia, and a story worth rewinding for.
           </p>
-
-          <!-- CHANGED: was <a href="..."> now opens modal -->
-          <button onclick="openCheckout()" class="btn btn--primary btn--large">
+          <!-- ✅ CHANGED: old whop link removed, replaced with checkout embed anchor -->
+          <a href="#whop-checkout" class="btn btn--primary btn--large">
             Start a Subscription
-          </button>
-
+          </a>
           <p class="gift-cta__price">
             <strong>$13</strong>/month · or save with <strong>$99</strong>/year
           </p>
         </div>
       </div>
     </section>
-
-
     <!-- ========== FAQ ========== -->
     <section id="faq" class="faq section" aria-labelledby="faq-heading">
       <div class="container">
@@ -601,7 +415,6 @@
           <span class="faq__label">Frequently Asked Questions</span>
           <h2 id="faq-heading">Got Questions? We've Got Answers.</h2>
         </div>
-
         <div class="faq__list reveal">
           <div class="faq__item">
             <button class="faq__question" aria-expanded="false">
@@ -614,7 +427,6 @@
               </div>
             </div>
           </div>
-
           <div class="faq__item">
             <button class="faq__question" aria-expanded="false">
               <span>How much does it cost?</span>
@@ -626,7 +438,6 @@
               </div>
             </div>
           </div>
-
           <div class="faq__item">
             <button class="faq__question" aria-expanded="false">
               <span>Is this a good gift?</span>
@@ -638,7 +449,6 @@
               </div>
             </div>
           </div>
-
           <div class="faq__item">
             <button class="faq__question" aria-expanded="false">
               <span>What comes in each delivery?</span>
@@ -650,7 +460,6 @@
               </div>
             </div>
           </div>
-
           <div class="faq__item">
             <button class="faq__question" aria-expanded="false">
               <span>Can I cancel?</span>
@@ -662,7 +471,6 @@
               </div>
             </div>
           </div>
-
           <div class="faq__item">
             <button class="faq__question" aria-expanded="false">
               <span>When do letters ship?</span>
@@ -674,7 +482,6 @@
               </div>
             </div>
           </div>
-
           <div class="faq__item">
             <button class="faq__question" aria-expanded="false">
               <span>Do you ship outside the US?</span>
@@ -689,10 +496,100 @@
         </div>
       </div>
     </section>
-
+ 
+    <!-- ✅ CHANGED: Multi-Plan Whop Checkout Embed injected here (replaces old external links) -->
+    <section id="whop-checkout" class="section" aria-label="Subscribe">
+      <div class="container">
+        <script src="https://js.whop.com/static/checkout/loader.js" async defer></script>
+        <div class="wd-overlay">
+          <div class="wd-modal" role="dialog" aria-label="Checkout plan selector">
+            <div class="wd-plan-options" role="radiogroup" aria-label="Choose your plan">
+              <h3 class="wd-products-title">Choose your plan</h3>
+              <label class="wd-plan-card">
+                <input type="radio" name="wd_plan" value="1300month" checked />
+                <div class="wd-plan-body">
+                  <div class="wd-plan-title">$13.00&#x2F;month</div>
+                </div>
+              </label>
+              <label class="wd-plan-card">
+                <input type="radio" name="wd_plan" value="annual9900year" />
+                <div class="wd-plan-body">
+                  <div class="wd-plan-title">Annual - $99.00&#x2F;year</div>
+                </div>
+              </label>
+            </div>
+            <div id="whop-checkout-wrapper"></div>
+          </div>
+        </div>
+        <script>
+          (() => {
+            const LIVE_HOST = location.hostname;
+            const wrapper = document.getElementById('whop-checkout-wrapper');
+            const radios = Array.from(document.querySelectorAll('input[name="wd_plan"]'));
+            const plans = [
+              { radioValue: '1300month',      planId: 'https://whop.com/checkout/plan_zBrA7pU4rRMqQ'  },
+              { radioValue: 'annual9900year', planId: 'https://whop.com/checkout/plan_vXpvP1SRQLRm4' }
+            ];
+            function getPlanId() {
+              const sel = radios.find(r => r.checked)?.value || plans[0].radioValue;
+              const def = plans.find(p => p.radioValue === sel) || plans[0];
+              return def.planId;
+            }
+            function mountCheckout(planId) {
+              const old = wrapper.querySelector('.whop-checkout-embed');
+              if (old) old.remove();
+              const mount = document.createElement('div');
+              mount.className = 'whop-checkout-embed';
+              mount.setAttribute('data-whop-checkout-plan-id', planId);
+              mount.setAttribute('data-whop-checkout-theme', 'dark');
+              mount.setAttribute('data-whop-checkout-theme-accent-color', 'blue');
+              mount.setAttribute('data-whop-checkout-host', LIVE_HOST);
+              wrapper.appendChild(mount);
+              window.whopCheckoutLoader?.scan?.();
+            }
+            function ensureLoader(callback) {
+              if (window.whopCheckoutLoader?.scan) { callback(); return; }
+              const existing = document.querySelector('script[src*="js.whop.com"]');
+              if (existing) { existing.addEventListener('load', callback, { once: true }); return; }
+              const script = document.createElement('script');
+              script.src = 'https://js.whop.com/static/checkout/loader.js';
+              script.async = true;
+              script.defer = true;
+              script.onload = callback;
+              script.onerror = () => callback();
+              document.head.appendChild(script);
+            }
+            function render() { mountCheckout(getPlanId()); }
+            function init() {
+              render();
+              ensureLoader(() => window.whopCheckoutLoader?.scan?.());
+              radios.forEach(r => r.addEventListener('change', render));
+            }
+            if (document.readyState !== 'loading') init();
+            else document.addEventListener('DOMContentLoaded', init);
+          })();
+        </script>
+        <style>
+          :root { --wd-accent: #0090ff; --wd-border: #374151; --wd-bg: #000000; --wd-text: #f9fafb; }
+          .wd-overlay { display:flex; justify-content:center; align-items:flex-start; padding:16px; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:transparent; color:var(--wd-text); min-height:100%; }
+          .wd-modal { width:100%; background:var(--wd-bg); border-radius:12px; box-shadow:0 10px 30px -10px rgba(0,0,0,0.3); display:flex; flex-direction:column; }
+          .wd-plan-options { padding: 24px 24px 12px; display: grid; gap: 12px; }
+          .wd-products-title { margin: 0 0 4px 0; font-size: 20px; font-weight: 700; }
+          .wd-plan-card { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: flex-start; padding: 16px; border: 2px solid var(--wd-border); border-radius: 12px; cursor: pointer; transition: all 0.2s ease; }
+          .wd-plan-card:hover { border-color: var(--wd-accent); }
+          .wd-plan-card input[type="radio"] { accent-color: var(--wd-accent); margin-top: 2px; }
+          .wd-plan-card:has(input[type="radio"]:checked) { border-color: var(--wd-accent); background: color-mix(in srgb, var(--wd-accent) 6%, transparent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--wd-accent) 18%, transparent); }
+          .wd-plan-body { display: grid; gap: 4px; }
+          .wd-plan-title { font-weight: 700; font-size: 16px; }
+          .wd-plan-description { font-size: 14px; opacity: 0.8; }
+          .wd-plan-price { font-size: 14px; font-weight: 600; color: var(--wd-accent); }
+          #whop-checkout-wrapper { padding: 0 24px 24px; }
+        </style>
+      </div>
+    </section>
+    <!-- END Whop Checkout Embed -->
+ 
   </main>
-
-
   <!-- ========== FOOTER ========== -->
   <footer class="footer" role="contentinfo">
     <div class="container">
@@ -701,7 +598,6 @@
           <p class="footer__brand-name">VHS Letters</p>
           <p>An immersive 80s story experience delivered to your mailbox every month. Handcrafted letters, vintage extras, and a story worth rewinding for.</p>
         </div>
-
         <div class="footer__col">
           <h4>Explore</h4>
           <a href="#how-it-works">How It Works</a>
@@ -709,7 +605,6 @@
           <a href="#stories">Stories</a>
           <a href="#faq">FAQ</a>
         </div>
-
         <div class="footer__col">
           <h4>Policies</h4>
           <a href="/terms">Terms of Service</a>
@@ -718,14 +613,12 @@
           <a href="/refund">Refund Policy</a>
         </div>
       </div>
-
       <div class="footer__bottom">
         <p>&copy; 2026 VHS Letters. All rights reserved.</p>
         <p>Made with real 80s nostalgia in the USA</p>
       </div>
     </div>
   </footer>
-
   <!-- JavaScript -->
   <script src="js/script.js"></script>
 </body>

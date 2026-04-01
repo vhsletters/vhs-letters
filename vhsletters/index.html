@@ -22,15 +22,17 @@
   <meta name="twitter:description" content="An immersive 80s story told through handcrafted letters, movie stubs, and polaroid photos. Delivered monthly.">
   <meta name="twitter:image" content="https://vhsletters.com/assets/vhs-hero.jpg">
   <!-- Favicon -->
-  <link rel="icon" href="assets/vhs-icon.jpg" type="image/avif">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96x96.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="assets/site.webmanifest">
   <!-- Preconnect for fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
   <!-- Schema.org Product Markup -->
-  <!-- ✅ CHANGED: offers.url updated from old whop link to new monthly plan -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -130,10 +132,9 @@
         <a href="#stories">Stories</a>
         <a href="#faq">FAQ</a>
       </div>
-      <!-- ✅ CHANGED: old whop link removed, replaced with checkout embed anchor -->
-      <a href="#whop-checkout" class="btn btn--primary btn--small nav__cta">
+      <button type="button" class="btn btn--primary btn--small nav__cta plan-picker-trigger">
         Start a Subscription
-      </a>
+      </button>
       <!-- Mobile toggle -->
       <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span>
@@ -146,10 +147,9 @@
         <a href="#whats-inside" role="menuitem">What's Inside</a>
         <a href="#stories" role="menuitem">Stories</a>
         <a href="#faq" role="menuitem">FAQ</a>
-        <!-- ✅ CHANGED: old whop link removed, replaced with checkout embed anchor -->
-        <a href="#whop-checkout" class="btn btn--primary" role="menuitem">
+        <button type="button" class="btn btn--primary plan-picker-trigger" role="menuitem">
           Start a Subscription
-        </a>
+        </button>
       </div>
     </div>
   </nav>
@@ -169,10 +169,10 @@
             Something from 1987 is waiting in your mailbox. An immersive story told through handcrafted letters — packed with movie stubs, polaroid photos, and surprises straight from the 80s. Delivered monthly, all year long.
           </p>
           <div class="hero__cta-group">
-            <!-- ✅ CHANGED: old whop link removed, replaced with checkout embed anchor -->
-            <a href="#whop-checkout" class="btn btn--primary btn--large">
+            <!-- ✅ Opens plan picker modal -->
+            <button type="button" class="btn btn--primary btn--large plan-picker-trigger">
               Start Your Story <span class="btn__price">— $13/mo</span>
-            </a>
+            </button>
             <a href="#how-it-works" class="btn btn--secondary btn--large">
               See How It Works
             </a>
@@ -197,7 +197,7 @@
         <div class="trust-bar__item">
           <span class="trust-bar__icon" aria-hidden="true">📬</span>
           <span class="trust-bar__label">Monthly Deliveries</span>
-          <span class="trust-bar__sub">Straight to your mailbox</span>
+          <span class="trust-bar__sub">Straight to your (or their) mailbox</span>
         </div>
         <div class="trust-bar__item">
           <span class="trust-bar__icon" aria-hidden="true">🛡️</span>
@@ -323,15 +323,14 @@
           <article class="story-card story-card--live">
             <div class="story-card__body">
               <span class="story-card__badge story-card__badge--live">● Available Now</span>
-              <h3 class="story-card__title">Neon Heartbreak</h3>
-              <p class="story-card__genre">Romance · Coming of Age · 1987</p>
+              <h3 class="story-card__title">Neon Hearts</h3>
+              <p class="story-card__genre">80s Romance · 1987</p>
               <p class="story-card__desc">
-                Two teenagers navigate neon-lit nights, first love, and the bittersweet ache of a summer that changes everything. Set against the backdrop of a small-town video store, this story captures the raw emotion and big feelings nobody was embarrassed to have.
+                Step into the pulse of 1987. The Sunset Strip is alive with neon, the beaches are golden, and somewhere between a crackle of INXS and a flash of strobe light, a love story begins. Lana Cruz is a freelance writer with big curls who's sworn off romance — until photographer August Mercer lays eyes on her at the Electric Rose and knows he's a goner. What starts as a dance becomes boardwalk mornings, Mulholland drives at midnight, and a love that makes Lana rethink everything. Then life interrupts, and the answer waits on Venice Beach in the last light of California autumn.
               </p>
-              <!-- ✅ CHANGED: old whop link removed, replaced with checkout embed anchor -->
-              <a href="#whop-checkout" class="btn btn--primary">
+              <button type="button" class="btn btn--primary plan-picker-trigger">
                 Choose This Story <span class="btn__price">— $13/mo</span>
-              </a>
+              </button>
             </div>
           </article>
           <!-- COMING SOON -->
@@ -369,9 +368,9 @@
           <div class="testimonial">
             <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
             <p class="testimonial__text">
-              My dad is the hardest person to buy for. He literally has everything. But when the first VHS Letters envelope showed up, he called me within an hour. He was so excited. Now he waits by the mailbox like he's 12 again.
+              My mom is the hardest person to buy for. She literally has everything. But when the first VHS Letters envelope showed up, she called me within an hour. She was so excited. Now she waits by the mailbox like she's 12 again.
             </p>
-            <p class="testimonial__author"><strong>Jessica R.</strong> · Gifted to her father</p>
+            <p class="testimonial__author"><strong>Jessica R.</strong> · Gifted to her mother</p>
           </div>
           <div class="testimonial">
             <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
@@ -398,10 +397,9 @@
           <p>
             Whether it's for yourself or the 80s lover in your life — give something worth looking forward to every single month. No batteries required. No screens involved. Just real letters, real nostalgia, and a story worth rewinding for.
           </p>
-          <!-- ✅ CHANGED: old whop link removed, replaced with checkout embed anchor -->
-          <a href="#whop-checkout" class="btn btn--primary btn--large">
+          <button type="button" class="btn btn--primary btn--large plan-picker-trigger">
             Start a Subscription
-          </a>
+          </button>
           <p class="gift-cta__price">
             <strong>$13</strong>/month · or save with <strong>$99</strong>/year
           </p>
@@ -497,97 +495,181 @@
       </div>
     </section>
  
-    <!-- ✅ CHANGED: Multi-Plan Whop Checkout Embed injected here (replaces old external links) -->
-    <section id="whop-checkout" class="section" aria-label="Subscribe">
-      <div class="container">
-        <script src="https://js.whop.com/static/checkout/loader.js" async defer></script>
-        <div class="wd-overlay">
-          <div class="wd-modal" role="dialog" aria-label="Checkout plan selector">
-            <div class="wd-plan-options" role="radiogroup" aria-label="Choose your plan">
-              <h3 class="wd-products-title">Choose your plan</h3>
-              <label class="wd-plan-card">
-                <input type="radio" name="wd_plan" value="1300month" checked />
-                <div class="wd-plan-body">
-                  <div class="wd-plan-title">$13.00&#x2F;month</div>
-                </div>
-              </label>
-              <label class="wd-plan-card">
-                <input type="radio" name="wd_plan" value="annual9900year" />
-                <div class="wd-plan-body">
-                  <div class="wd-plan-title">Annual - $99.00&#x2F;year</div>
-                </div>
-              </label>
-            </div>
-            <div id="whop-checkout-wrapper"></div>
-          </div>
+    <!-- ========== PLAN PICKER MODAL ========== -->
+    <div id="plan-picker" class="plan-modal" aria-hidden="true" role="dialog" aria-label="Choose your plan">
+      <div class="plan-modal__backdrop"></div>
+      <div class="plan-modal__content">
+        <button type="button" class="plan-modal__close" aria-label="Close">&times;</button>
+        <h3 class="plan-modal__title">Choose Your Plan</h3>
+        <p class="plan-modal__sub">Something electric is coming in the mail.</p>
+        <div class="plan-modal__options">
+          <a href="https://whop.com/checkout/plan_zBrA7pU4rRMqQ" class="plan-modal__card" target="_blank" rel="noopener">
+            <span class="plan-modal__card-price">$13</span>
+            <span class="plan-modal__card-label">/month</span>
+            <span class="plan-modal__card-desc">Cancel anytime</span>
+          </a>
+          <a href="https://whop.com/checkout/plan_vXpvP1SRQLRm4" class="plan-modal__card plan-modal__card--featured" target="_blank" rel="noopener">
+            <span class="plan-modal__card-badge">Best Value</span>
+            <span class="plan-modal__card-price">$99</span>
+            <span class="plan-modal__card-label">/year</span>
+            <span class="plan-modal__card-desc">Save over 35%</span>
+          </a>
         </div>
-        <script>
-          (() => {
-            const LIVE_HOST = location.hostname;
-            const wrapper = document.getElementById('whop-checkout-wrapper');
-            const radios = Array.from(document.querySelectorAll('input[name="wd_plan"]'));
-            const plans = [
-              { radioValue: '1300month',      planId: 'https://whop.com/checkout/plan_zBrA7pU4rRMqQ'  },
-              { radioValue: 'annual9900year', planId: 'https://whop.com/checkout/plan_vXpvP1SRQLRm4' }
-            ];
-            function getPlanId() {
-              const sel = radios.find(r => r.checked)?.value || plans[0].radioValue;
-              const def = plans.find(p => p.radioValue === sel) || plans[0];
-              return def.planId;
-            }
-            function mountCheckout(planId) {
-              const old = wrapper.querySelector('.whop-checkout-embed');
-              if (old) old.remove();
-              const mount = document.createElement('div');
-              mount.className = 'whop-checkout-embed';
-              mount.setAttribute('data-whop-checkout-plan-id', planId);
-              mount.setAttribute('data-whop-checkout-theme', 'dark');
-              mount.setAttribute('data-whop-checkout-theme-accent-color', 'blue');
-              mount.setAttribute('data-whop-checkout-host', LIVE_HOST);
-              wrapper.appendChild(mount);
-              window.whopCheckoutLoader?.scan?.();
-            }
-            function ensureLoader(callback) {
-              if (window.whopCheckoutLoader?.scan) { callback(); return; }
-              const existing = document.querySelector('script[src*="js.whop.com"]');
-              if (existing) { existing.addEventListener('load', callback, { once: true }); return; }
-              const script = document.createElement('script');
-              script.src = 'https://js.whop.com/static/checkout/loader.js';
-              script.async = true;
-              script.defer = true;
-              script.onload = callback;
-              script.onerror = () => callback();
-              document.head.appendChild(script);
-            }
-            function render() { mountCheckout(getPlanId()); }
-            function init() {
-              render();
-              ensureLoader(() => window.whopCheckoutLoader?.scan?.());
-              radios.forEach(r => r.addEventListener('change', render));
-            }
-            if (document.readyState !== 'loading') init();
-            else document.addEventListener('DOMContentLoaded', init);
-          })();
-        </script>
-        <style>
-          :root { --wd-accent: #0090ff; --wd-border: #374151; --wd-bg: #000000; --wd-text: #f9fafb; }
-          .wd-overlay { display:flex; justify-content:center; align-items:flex-start; padding:16px; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:transparent; color:var(--wd-text); min-height:100%; }
-          .wd-modal { width:100%; background:var(--wd-bg); border-radius:12px; box-shadow:0 10px 30px -10px rgba(0,0,0,0.3); display:flex; flex-direction:column; }
-          .wd-plan-options { padding: 24px 24px 12px; display: grid; gap: 12px; }
-          .wd-products-title { margin: 0 0 4px 0; font-size: 20px; font-weight: 700; }
-          .wd-plan-card { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: flex-start; padding: 16px; border: 2px solid var(--wd-border); border-radius: 12px; cursor: pointer; transition: all 0.2s ease; }
-          .wd-plan-card:hover { border-color: var(--wd-accent); }
-          .wd-plan-card input[type="radio"] { accent-color: var(--wd-accent); margin-top: 2px; }
-          .wd-plan-card:has(input[type="radio"]:checked) { border-color: var(--wd-accent); background: color-mix(in srgb, var(--wd-accent) 6%, transparent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--wd-accent) 18%, transparent); }
-          .wd-plan-body { display: grid; gap: 4px; }
-          .wd-plan-title { font-weight: 700; font-size: 16px; }
-          .wd-plan-description { font-size: 14px; opacity: 0.8; }
-          .wd-plan-price { font-size: 14px; font-weight: 600; color: var(--wd-accent); }
-          #whop-checkout-wrapper { padding: 0 24px 24px; }
-        </style>
       </div>
-    </section>
-    <!-- END Whop Checkout Embed -->
+    </div>
+
+    <style>
+      /* Plan Picker Modal */
+      .plan-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9000;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+      }
+      .plan-modal--open {
+        display: flex;
+      }
+      .plan-modal__backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+      }
+      .plan-modal__content {
+        position: relative;
+        background: #1c1917;
+        border: 1px solid #2e2824;
+        border-radius: 16px;
+        padding: 32px 24px;
+        max-width: 420px;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+      }
+      .plan-modal__close {
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        background: none;
+        border: none;
+        color: #6b6560;
+        font-size: 1.8rem;
+        cursor: pointer;
+        line-height: 1;
+        padding: 4px;
+        transition: color 0.2s;
+      }
+      .plan-modal__close:hover {
+        color: #ece5dd;
+      }
+      .plan-modal__title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 1.8rem;
+        letter-spacing: 0.03em;
+        color: #faf6f1;
+        margin-bottom: 4px;
+        padding-bottom: 0;
+      }
+      .plan-modal__sub {
+        font-size: 0.9rem;
+        color: #a39e97;
+        margin-bottom: 24px;
+      }
+      .plan-modal__options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .plan-modal__card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        padding: 24px 16px;
+        border: 2px solid #2e2824;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #ece5dd;
+        transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+        position: relative;
+      }
+      .plan-modal__card:hover {
+        border-color: #d4a04a;
+        background: rgba(212, 160, 74, 0.06);
+        transform: translateY(-2px);
+      }
+      .plan-modal__card--featured {
+        border-color: #d4a04a;
+        background: rgba(212, 160, 74, 0.06);
+      }
+      .plan-modal__card-badge {
+        position: absolute;
+        top: -10px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.6rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: #d4a04a;
+        color: #0c0a09;
+        padding: 3px 10px;
+        border-radius: 100px;
+      }
+      .plan-modal__card-price {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 2.4rem;
+        color: #faf6f1;
+        line-height: 1.1;
+      }
+      .plan-modal__card-label {
+        font-size: 0.85rem;
+        color: #a39e97;
+      }
+      .plan-modal__card-desc {
+        font-size: 0.75rem;
+        color: #6b6560;
+        margin-top: 4px;
+      }
+    </style>
+
+    <script>
+      /* Plan Picker Modal Logic */
+      (function() {
+        const modal = document.getElementById('plan-picker');
+        const backdrop = modal.querySelector('.plan-modal__backdrop');
+        const closeBtn = modal.querySelector('.plan-modal__close');
+
+        function openModal() {
+          modal.classList.add('plan-modal--open');
+          modal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+          modal.classList.remove('plan-modal--open');
+          modal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+
+        /* All CTA buttons open the modal */
+        document.querySelectorAll('.plan-picker-trigger').forEach(function(btn) {
+          btn.addEventListener('click', openModal);
+        });
+
+        /* Close on backdrop click, close button, or Escape */
+        backdrop.addEventListener('click', closeModal);
+        closeBtn.addEventListener('click', closeModal);
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && modal.classList.contains('plan-modal--open')) {
+            closeModal();
+          }
+        });
+      })();
+    </script>
  
   </main>
   <!-- ========== FOOTER ========== -->
